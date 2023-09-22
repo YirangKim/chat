@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react"
 import "./App.css";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
 
   //채팅 내용
-  let [ 채팅, 채팅변경 ] = useState(['노트북 추천해줘', '화면사이즈 알려줘']);
+  let [ 채팅, 채팅변경 ] = useState(['']);
   let [ 첫인사, 첫인사변경 ] = useState(true);
   // input 저장
   let [ 입력값, 입력값변경 ] = useState('');
@@ -44,13 +46,7 @@ function App() {
       </Navbar>
 
       <div className="container-wrap">
-        <div className="left-box">
-          <ul>
-            <li>채팅목록</li>
-            <li>영상편집 노트북 추천해줘</li>
-            <li>사무용 노트북 추천해줘</li>
-          </ul>
-        </div>
+       
     
         <div className="right-content">
           <div className="chat-list">
@@ -96,6 +92,17 @@ function App() {
         </div>
       </div>
 
+    <Routes>
+      <Route path="/list" element={
+         <div className="left-box">
+         <ul>
+           <li>채팅목록</li>
+           <li>영상편집 노트북 추천해줘</li>
+           <li>사무용 노트북 추천해줘</li>
+         </ul>
+       </div>
+      } />
+    </Routes>
 
     </div>
   );
