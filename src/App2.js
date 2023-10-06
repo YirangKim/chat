@@ -1,86 +1,37 @@
 //useState가 정의되어 있지 않음 오류 : 최상단에 넣기 
-import React, { useEffect, useState, useRef } from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import "./App2.css";
 import ReactDOM from 'react-dom'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faCopyright } from "@fortawesome/free-solid-svg-icons";
-
 
 function App() {
 
-  // content 사용자가 입력한 메시지를 저장
-  let [ content, setContent ] = useState('');
-  // chats 대화 내용을 저장
-  const [chats, setChats] = useState([]);
-  // welcome 사용자 앱 처음 접속 환영 메세지 
+
+  //chat 내용
+  let [ chat, setChat ] = useState(['']);
   let [ welcome, setWelcome ] = useState(true);
-
-  // 스크롤 chat-list 엘리먼트에 대한 ref 생성
-  const chatListRef = useRef(null);
-
-   // state
-   const [data, setData] = useState([{}])
-
-  // 새로운 채팅이 추가될 때 스크롤을 아래로 이동하는 useEffect
-  useEffect(() => {
-    if (chatListRef.current) {
-      // chat-list 엘리먼트의 스크롤을 아래로 이동
-      chatListRef.current.scrollTop = chatListRef.current.scrollHeight;
-    }
-  }, [chats]);
+  // input 저장
+  let [ content, setContent ] = useState('');
+ 
+   // 챗봇 메시지를 나타내는 상태 추가
+   let [message, setMessage] = useState("");
+  // 챗봇 스타일을 나타내는 상태 추가
+  let [style, setStyle] = useState({ display: "none" });
 
    // 첫 방문 시 챗봇 메시지와 스타일을 1초 뒤에 나타나게 하기
-   // useEffect : 타이머 
-   // 배열안에 객체 "message": "안녕하세요. 챗봇입니다"
    useEffect(() => {
     if (welcome) {
       setTimeout(() => {
-        setChats([{
-          "message" : "안녕하세요. 챗봇입니다",
-          "type" : "AI"
-        }])
+        setMessage("안녕하세요. 챗봇입니다");
         setWelcome(false);
-      }, 500);
+        setStyle({ display: "block" });
+      }, 1000);
     }
   }, [welcome]);
-
-
-  const onUserInput = () => {
-    let copy = [...chats];
-    const userInput = content
-    copy.push({
-      "type": "USER",
-      "message": userInput
-    });
-    setChats(copy);
-
-    setTimeout(() => {
-      let copy2 = [...copy];
-      let aiAnswer = "";
-      if (userInput.includes("안녕")) {
-        aiAnswer = "반갑습니다"
-      } else if (userInput.includes("노트북")) {
-        aiAnswer = (
-          <div>
-            <div>
-          <img className="chat-image" src="/laptop.png" alt="맥북 이미지" />
-          </div>
-          <div><p>맥북을 추천합니다</p></div>
-        </div>
-        );
-      } 
-
-      copy2.push({
-        "type": "AI",
-        "message": aiAnswer
-      });
-      setChats(copy2);
-    }, 1000);
-  }
 
 
   return (
@@ -123,22 +74,28 @@ function App() {
         </div>
     
         <div className="right-content">
-           {/* 채팅 메시지 스크롤 */}
-          <div className="chat-list" ref={chatListRef}>
-            {
-              chats.map((chat, index) => {
-                const top = index * 60;
-                return <div
-                key={index}
-                className={chat.type === "USER" ? "user-chat" : "ai-chat"}
-                style={{top: `${top}px`}}
-                >
-                  {chat.message}
-                </div>
-              })
-            }
-          </div>
+          <div className="chat-list">
 
+            <div className="chat-AI" style={style}>
+              {/* 챗봇 메시지를 화면에 표시 */}
+              {message && <div>{message}</div>}
+            </div>
+
+              {/* map함수 :
+              1) chat 갯수만큼 html생성
+              2) 같은 글 따로따로 보이게끔 : 파라미터 */}
+            <div className="chat-user-wrap" >
+                {
+                chat.map(function(a, i){
+                  return (
+                    <div className="chat-user">
+                    { chat[i] }</div>
+                  )
+                })
+              }
+            </div>
+          </div>
+          
           <div className="chat-box">
 
 
@@ -152,7 +109,11 @@ function App() {
             {/* button누르면 chat 추가
             <div>생성x, state에 글 추가 
             unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가*/}
-              <button onClick={onUserInput}>send</button>
+              <button onClick={()=>{
+                let copy = [...chat];
+                copy.push(content);
+                setChat(copy);
+              }}>send</button>
           </div>
         </div>
       </div>
@@ -163,12 +124,13 @@ function App() {
 
 
   </div>
-  )
- }
+  );
+}
 
 
 <script>
 
 </script>
+
 
 export default App;

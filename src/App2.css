@@ -149,7 +149,6 @@ body {
   height: 70vh;
   border: solid 1px #009c58;
   overflow-y: scroll;
-  position: relative;
 }
 
 .chat-box{
@@ -238,29 +237,3 @@ body {
   padding:10px;
   border-bottom:1px solid #72b0ed;
 }
-
-/* 채팅 스타일 */
-
-.user-chat {
-  position: absolute;
-  right: 50px;
-  height: 50px;
-  width: 300px;
-  border-radius: 20px;
-  background-color: #b2cfee;
-}
-.ai-chat {
-  position: absolute;
-  left: 50px;
-  width: 300px;
-  border-radius: 20px;
-  background-color: #1888ff;
-  color: white;
-  
-}
-
-.chat-image {
-  width: 200px;
-  background-color: #ffffff;
-}
-
