@@ -35,7 +35,7 @@ const data = {
 //크기줄이고, 폰트사이트 키우고
 const NewChart = () => {
   return (
-    <div style={{ position: "relative", height: "30vh" }}>
+    <div style={{ position: "relative", height: "20vh" }}>
       <Radar
         data={data}
         options={{
