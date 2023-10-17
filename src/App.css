@@ -1,5 +1,5 @@
 body {
-  margin:0;
+  margin: 0;
 }
 
 .App {
@@ -42,11 +42,14 @@ body {
   }
 }
 
+/* Chat 컴포넌트 */
+
 .chat-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+  margin-top: 20px;
 }
 
 .chat-window {
@@ -54,10 +57,11 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px; /* 각 채팅 창 사이의 간격을 설정합니다. */
 }
 
 .chat-header {
-  background-color: #007bff;
+  background-color: #d8d8d8;
   color: white;
   padding: 10px;
   text-align: center;
@@ -76,7 +80,7 @@ body {
 }
 
 .chat-message.user {
-  background-color: #007bff;
+  background-color: #c6cfd8;
   color: white;
   align-self: flex-end;
 }
@@ -120,48 +124,48 @@ body {
   width: 80vh;
   height: 100px;
   font-size: 20px;
-  border-style:solid 1px #ff0062;
+  border-style: solid 1px #ff0062;
 }
 
-.container-wrap{
+.container-wrap {
   display: flex;
   flex-direction: row;
 }
 
-
-
 .right-content {
-  padding: 50px;
+  padding: 50px 200px 0 200px;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   list-style-type: none;
-  border: solid 1px blue;
+  /* border: solid 1px blue; */
 }
 
 .chat-list {
   width: 100%;
+  height: 80vh;
+  /* max-height: 400px; */
+  overflow-y: auto;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 100px;
-  height: 70vh;
-  border: solid 1px #009c58;
+
+  /* border: solid 1px #009c58; */
   overflow-y: scroll;
   position: relative;
 }
 
-.chat-box{
+.chat-box {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  border: solid 1px #009c58;
+  /* border: solid 1px #009c58; */
 }
 
-.chat-AI{
+.chat-AI {
   display: flex;
   width: 50%;
   height: 60px;
@@ -179,12 +183,12 @@ body {
   flex-grow: 1;
 }
 
-.chat-user{
+.chat-user {
   display: flex;
   margin-top: 100px;
   height: 60px;
   background-color: #0072ed;
-  color:#f4f4f4;
+  color: #f4f4f4;
   border-radius: 10px;
   align-items: center;
   justify-content: center;
@@ -193,14 +197,15 @@ body {
 /* 슬라이드메뉴 */
 
 .left-slide {
-  width: 10%;
+  width: 13%;
   display: flex;
-  height: 100vh;
+  height: 70vh;
   flex-direction: column;
   border: solid 1px #b300ff;
   /* position:relative;    */
+  position: fixed; /* 고정 위치로 설정 */
+  left: 0; /* 왼쪽에 위치시킴 */
 }
-
 
 /* .left-slide{
   width:10%;
@@ -218,25 +223,25 @@ body {
   background-color:#d9edff;
 } */
 
-.slide-title{
+.slide-title {
   text-align: left;
-  width:100%;
-  height:4cqw;
-  font-size:20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-bottom:1px solid #72b0ed;
+  width: 100%;
+  height: 4cqw;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #72b0ed;
 }
-.left-slide.on{
-  left:0;
+.left-slide.on {
+  left: 0;
 }
-.left-slide p{
+.left-slide p {
   text-align: left;
-  display:inline-block;
-  width:100%;
-  padding:10px;
-  border-bottom:1px solid #72b0ed;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #72b0ed;
 }
 
 /* 채팅 스타일 */
@@ -244,8 +249,9 @@ body {
 .user-chat {
   position: absolute;
   right: 50px;
-  height: 50px;
   width: 300px;
+  padding: 20px;
+  /* height: 50px; */
   border-radius: 20px;
   background-color: #b2cfee;
 }
@@ -253,14 +259,15 @@ body {
   position: absolute;
   left: 50px;
   width: 300px;
+  padding: 20px;
   border-radius: 20px;
-  background-color: #1888ff;
-  color: white;
-  
+  /* border: 1px solid #0056b3; */
+  background-color: #dbecff;
+  color: rgb(0, 0, 0);
+  text-align: left; /* 왼쪽 정렬 */
 }
 
 .chat-image {
   width: 200px;
   background-color: #ffffff;
 }
-
