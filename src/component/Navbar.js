@@ -5,8 +5,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ChatHistory from "./ChatHistory";
+import React, { useState } from "react";
 
 function Navigation() {
+  const [isShow, setShow] = useState(false);
+
   const customNavbarStyle = {
     height: "70px",
     borderBottom: "1px solid #ccc",
@@ -14,8 +17,7 @@ function Navigation() {
   };
 
   const toggleChatHistory = () => {
-    // ChatHistory 컴포넌트에서 정의한 toggleChatHistory 함수 내용을 여기에 복사
-    // 예: setIsVisible(!isVisible);
+    setShow(!isShow);
   };
 
   return (
@@ -25,24 +27,35 @@ function Navigation() {
       style={{ ...customNavbarStyle, background: "transparent" }}
     >
       <Container fluid style={{ margin: "0 20px" }}>
-        {/* fontawesome 아이콘가져와야함 */}
-        {/* <FontAwesomeIcon icon={faBars} style={{ margin: "0 10px" }} /> */}
-        <FontAwesomeIcon
-          icon={faBars}
-          style={{ margin: "0 10px", cursor: "pointer" }}
-          onClick={ChatHistory.toggleChatHistory} // ChatHistory 컴포넌트의 toggleChatHistory 함수 사용
-        />
-        <Navbar.Brand href="#home">PickChat</Navbar.Brand>
+        <div className="navbar-content">
+          <FontAwesomeIcon
+            icon={faBars}
+            style={{ cursor: "pointer" }}
+            onClick={toggleChatHistory}
+          />
+          <div className="brand-content">
+            <Navbar.Brand href="#home">PickChat</Navbar.Brand>
+          </div>
+        </div>
+        {isShow && (
+          <div className="chatHistory">
+            <p>채팅목록</p>
+            <p>영상편집 노트북 추천해줘</p>
+            <p>사무용 노트북 추천해줘</p>
+            <p>사무용 노트북 추천해줘</p>
+          </div>
+        )}
+
+        {/* <Navbar.Brand href="#home">PickChat</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {/* 여기서 margin을 설정 */}
           <Nav className="me-auto">
-            <Nav.Link href="#home">채팅</Nav.Link>
-            {/* <Nav.Link href="#link">Link</Nav.Link> */}
+            {/* <Nav.Link href="#home">채팅</Nav.Link> */}
           </Nav>
 
           <Nav className="profile">
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+            <NavDropdown title="Admin" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">계정 정보</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">쿠폰</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">히스토리</NavDropdown.Item>

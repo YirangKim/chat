@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cardslide from "./Cardslide";
 import Chart from "./Chart";
 //fontawesome
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import "../App.css";
 
 function Chat() {
   // content 사용자가 입력한 메시지를 저장
@@ -151,7 +152,8 @@ function Chat() {
         {/* button누르면 chat 추가
             <div>생성x, state에 글 추가 
             unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가*/}
-        <button onClick={onUserInput}>send</button>
+        <FontAwesomeIcon icon="fa-solid fa-paper-plane" />
+        {/* <button onClick={onUserInput}>send</button> */}
       </div>
     </div>
   );

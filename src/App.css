@@ -276,3 +276,46 @@ body {
   width: 200px;
   background-color: #ffffff;
 }
+
+/* 스타일링 내비게이션 바 */
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-content {
+  display: flex;
+  align-items: center;
+}
+
+.chatHistory {
+  /* background: #fff; */
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  position: absolute;
+  top: 69px; /* 내비게이션 바의 아래에 위치 */
+  left: 0px; /* 왼쪽에 붙이도록 수정 */
+  z-index: 999; /* 다른 요소 위에 나타나도록 설정 */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* 스크롤 가능하도록 설정 */
+  text-align: left; /* 왼쪽 정렬 */
+  height: 100vh;
+  /* background-color: #0072ed; */
+  border-right: 1px solid #ccc;
+}
+
+.chatHistory p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+/* faBars 아이콘 스타일 */
+.fa-bars {
+  font-size: 24px;
+  color: #333; /* 아이콘 색상 설정 */
+}
+.fa-bars:hover {
+  color: #555; /* 아이콘 색상 설정 (마우스 호버 시) */
+}
