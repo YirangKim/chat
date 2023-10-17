@@ -6,6 +6,10 @@ function ChatHistory() {
   // ChatHistory 컴포넌트의 상태 설정
   const [isVisible, setIsVisible] = useState(false);
 
+  const toggleChatHistory = () => {
+    setIsVisible(!isVisible); // isVisible 상태를 토글
+  };
+
   return (
     <div className={`left-slide${isVisible ? " on" : ""}`} id="slide">
       <p className="slide-title">채팅목록</p>

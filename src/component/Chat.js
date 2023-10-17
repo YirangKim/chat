@@ -5,6 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Card from 'react-bootstrap/Carousel';
 import Cardslide from "./Cardslide";
 import Chart from "./Chart";
+//fontawesome
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { fas } from "@fortawesome/free-solid-svg-icons";
 
 function Chat() {
   // content 사용자가 입력한 메시지를 저장
@@ -131,7 +134,7 @@ function Chat() {
             2) input에 입력한 값 저장하기
             3) 마우스 엔터 */}
         <input
-          className="user-input"
+          className="user-input input-no-border"
           type="text"
           placeholder="픽챗에게 무엇이든 요청하세요. 1kg 100만원대 노트북 추천해줘"
           value={content}

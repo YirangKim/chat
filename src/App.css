@@ -124,7 +124,7 @@ body {
   width: 80vh;
   height: 100px;
   font-size: 20px;
-  border-style: solid 1px #ff0062;
+  /* border-style: solid 1px #ff0062; */
 }
 
 .container-wrap {
@@ -162,7 +162,12 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* border: solid 1px #009c58; */
+  border: solid 1px #009c58;
+}
+
+.input-no-border {
+  border: none; /* 테두리를 제거합니다. */
+  /* 다른 원하는 스타일을 추가할 수 있습니다. */
 }
 
 .chat-AI {
