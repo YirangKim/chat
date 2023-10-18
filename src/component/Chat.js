@@ -5,9 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Card from 'react-bootstrap/Carousel';
 import Cardslide from "./Cardslide";
 import Chart from "./Chart";
+import TypingText from "./TypingText";
+import Detail from "./Detail";
+import Loading from "./Loading.js";
 //fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 
 function Chat() {
@@ -40,7 +43,7 @@ function Chat() {
       setTimeout(() => {
         setChats([
           {
-            message: "안녕하세요. 챗봇입니다",
+            message: <TypingText text="안녕하세요. 픽챗입니다" interval={40} />,
             type: "AI",
           },
         ]);
@@ -63,6 +66,7 @@ function Chat() {
 
     setTimeout(() => {
       let copy2 = [...copy];
+      // aiAnswer 내용 초기화
       let aiAnswer = "";
       if (userInput.includes("안녕")) {
         aiAnswer = "반갑습니다";
@@ -70,24 +74,22 @@ function Chat() {
         aiAnswer = <Cardslide />;
       } else if (userInput.includes("노트북")) {
         aiAnswer = (
-          <div className="cardContent">
+          <div className="cardContent" style={{ width: "700px" }}>
             <div>
               <img className="chat-image" src="/laptop01.jpg" alt="노트북" />
             </div>
             <div>
-              <p>
-                롤을 중옵으로 돌릴 수 있는 가성비 좋은 노트북으로 "HP Nero
-                15-fc0076AU WIN11"을 추천드립니다. 이 노트북은 AMD 라이젠3(Zen2)
-                7320U (2.4GHz) 쿼드코어 CPU, 8GB DR5 램, 내장그래픽 Radeon 610M,
-                256GB M.2(NVMe) 저장장치를 갖추고 있습니다. 또한, 윈도우11이
-                설치되어 있고, 무선랜은 802.11ax(Wi-Fi 6)를 지원합니다. 가격은
-                1,830,000원입니다.
-              </p>
+              <TypingText
+                text="롤을 중옵으로 돌릴 수 있는 가성비 좋은 노트북으로 'HP Nero 15-fc0076AU WIN11'을 추천드립니다. 이 노트북은 AMD 라이젠3(Zen2) 7320U (2.4GHz) 쿼드코어 CPU, 8GB DR5 램, 내장그래픽 Radeon 610M, 256GB M.2(NVMe) 저장장치를 갖추고 있습니다. 또한, 윈도우11이 설치되어 있고, 무선랜은 802.11ax(Wi-Fi 6)를 지원합니다. 가격은 1,830,000원입니다."
+                interval={30}
+              />
             </div>
           </div>
         );
       } else if (userInput.includes("성능")) {
         aiAnswer = <Chart />;
+      } else if (userInput.includes("픽챗")) {
+        aiAnswer = <Loading />;
       }
 
       copy2.push({
@@ -107,17 +109,6 @@ function Chat() {
           ];
           const top = index * 60;
           return (
-            // ai답변 애니메이션
-            // <div
-            //   key={index}
-            //   className={`ai-chat ${
-            //     chat.type === "USER" ? "user-chat" : "animated"
-            //   }`}
-            //   style={{ top: `${top_list[index]}px` }}
-            // >
-            //   {chat.message}
-            // </div>
-
             <div
               key={index}
               className={chat.type === "USER" ? "user-chat" : "ai-chat"}
@@ -152,8 +143,7 @@ function Chat() {
         {/* button누르면 chat 추가
             <div>생성x, state에 글 추가 
             unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가*/}
-        <FontAwesomeIcon icon="fa-solid fa-paper-plane" />
-        {/* <button onClick={onUserInput}>send</button> */}
+        <FontAwesomeIcon icon={faPaperPlane} />
       </div>
     </div>
   );
