@@ -6,6 +6,13 @@ import Chart from "./Chart";
 import TypingText from "./TypingText";
 import Detail from "./Detail";
 import Loading from "./Loading";
+import Spec1 from "./Spec1";
+import Spec2 from "./Spec3";
+import Spec3 from "./Spec3";
+import AiSpeed from "./AiSpeed.js";
+import AiWeight from "./AiWeight.js";
+import AiDisplay from "./AiDisplay.js";
+
 //fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -93,24 +100,20 @@ function Chat() {
 
       if (content.includes("안녕")) {
         aiAnswer = "반갑습니다";
-      } else if (content.includes("노트북 5개")) {
+      } else if (content.includes("노트북 추천")) {
         aiAnswer = <Cardslide />;
-      } else if (content.includes("노트북")) {
-        aiAnswer = (
-          <div className="cardContent" style={{ width: "700px" }}>
-            <div>
-              <img className="chat-image" src="/laptop01.jpg" alt="노트북" />
-            </div>
-            <div>
-              <TypingText
-                text="롤을 중옵으로 돌릴 수 있는 가성비 좋은 노트북으로 'HP Nero 15-fc0076AU WIN11'을 추천드립니다. 이 노트북은 AMD 라이젠3(Zen2) 7320U (2.4GHz) 쿼드코어 CPU, 8GB DR5 램, 내장그래픽 Radeon 610M, 256GB M.2(NVMe) 저장장치를 갖추고 있습니다. 또한, 윈도우11이 설치되어 있고, 무선랜은 802.11ax(Wi-Fi 6)를 지원합니다. 가격은 1,830,000원입니다."
-                interval={30}
-              />
-            </div>
-          </div>
-        );
-      } else if (content.includes("성능")) {
-        aiAnswer = <Chart />;
+      } else if (content.includes("속도")) {
+        aiAnswer = <AiSpeed />;
+      } else if (content.includes("가벼운")) {
+        aiAnswer = <AiWeight />;
+      } else if (content.includes("큰화면")) {
+        aiAnswer = <AiDisplay />;
+      } else if (content.includes("1번 노트북 성능")) {
+        aiAnswer = <Spec1 />;
+      } else if (content.includes("2번 노트북 성능")) {
+        aiAnswer = <Spec2 />;
+      } else if (content.includes("3번 노트북 성능")) {
+        aiAnswer = <Spec3 />;
       } else if (content.includes("픽챗")) {
         aiAnswer = <Loading />;
         // 2.5초 후
@@ -143,7 +146,7 @@ function Chat() {
           <input
             className="user-input input-no-border"
             type="text"
-            placeholder="픽챗에게 무엇이든 요청하세요. 1kg 100만원대 노트북 추천해줘"
+            placeholder="픽챗에게 무엇이든 질문하세요. 1kg 100만원대 노트북 추천해줘"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && onUserInput()}

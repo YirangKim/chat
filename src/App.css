@@ -298,6 +298,10 @@ body {
   align-self: flex-start;
 }
 
+.text {
+  white-space: pre-line;
+}
+
 .chat-image {
   width: 200px;
   background-color: #ffffff;

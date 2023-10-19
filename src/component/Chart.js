@@ -23,7 +23,7 @@ const data = {
   labels: ["CPU성능", "GPU성능", "화면성능", "배터리", "무게"],
   datasets: [
     {
-      label: "# of Votes",
+      label: "노트북 성능",
       data: [8, 9, 7, 8, 8],
       backgroundColor: "rgba(255, 99, 132, 0.2)",
       borderColor: "rgba(255, 99, 132, 1)",
@@ -35,7 +35,7 @@ const data = {
 //크기줄이고, 폰트사이트 키우고
 const NewChart = () => {
   return (
-    <div style={{ position: "relative", height: "20vh" }}>
+    <div style={{ position: "relative", width: "300px" }}>
       <Radar
         data={data}
         options={{
