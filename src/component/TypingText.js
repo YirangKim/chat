@@ -14,11 +14,10 @@ function TypingText({ text, interval }) {
   useEffect(() => {
     if (currentIndex < text.length) {
       const timer = setTimeout(() => {
-        // text 문자열에서 현재 currentIndex까지의 문자들을 선택
         setDisplayText(displayText + text[currentIndex]);
         setCurrentIndex(currentIndex + 1);
       }, interval);
-
+      //setTimeout 시작, clearTimeout 멈춤
       return () => clearTimeout(timer);
     }
   }, [currentIndex, text, interval]);

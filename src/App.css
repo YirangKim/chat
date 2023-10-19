@@ -162,7 +162,21 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border: solid 1px #009c58;
+  align-items: center;
+}
+
+.chat-input {
+  width: 1000px;
+  height: 80px;
+  border: solid 1px #294ad3;
+  border-radius: 10px;
+}
+
+.chat-input input {
+  width: 800px;
+  height: 60px;
+  font-size: 18px;
+  color: #294ad3;
 }
 
 .input-no-border {
@@ -259,9 +273,11 @@ body {
   max-width: 800px;
   min-height: 68px;
   padding: 20px;
+  /* margin-bottom: 100px !important; */
   /* height: 50px; */
   border-radius: 20px;
-  background-color: #b2cfee;
+  background-color: #0072ed;
+  color: white;
   align-self: flex-end;
 }
 .ai-chat {
@@ -273,9 +289,10 @@ body {
   max-width: 900px;
   min-height: 68px;
   padding: 20px;
-  border-radius: 20px;
+  /* margin-bottom: 100px !important; */
+  border-radius: 15px;
   /* border: 1px solid #0056b3; */
-  background-color: #dbecff;
+  background-color: #f3f7fe;
   color: rgb(0, 0, 0);
   text-align: left; /* 왼쪽 정렬 */
   align-self: flex-start;
@@ -298,9 +315,15 @@ body {
   align-items: center;
 }
 
+.slide-title {
+  padding: 20px;
+  height: 30px;
+  background-color: red;
+  border-bottom: 1px solid #ccc;
+}
+
 .chatHistory {
   /* background: #fff; */
-  padding: 20px;
   /* border: 1px solid #ccc; */
   position: absolute;
   top: 69px; /* 내비게이션 바의 아래에 위치 */

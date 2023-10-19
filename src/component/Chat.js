@@ -1,43 +1,44 @@
-//useState가 정의되어 있지 않음 오류 : 최상단에 넣기
 import React, { useEffect, useState, useRef } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Card from 'react-bootstrap/Carousel';
 import Cardslide from "./Cardslide";
 import Chart from "./Chart";
 import TypingText from "./TypingText";
 import Detail from "./Detail";
-import Loading from "./Loading.js";
+import Loading from "./Loading";
 //fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import "../App.css";
 
 function Chat() {
+  // 상태
   // content 사용자가 입력한 메시지를 저장
-  let [content, setContent] = useState("");
+  const [content, setContent] = useState("");
   // chats 대화 내용을 저장
   const [chats, setChats] = useState([]);
-  // welcome 사용자 앱 처음 접속 환영 메세지
-  let [welcome, setWelcome] = useState(true);
+  // 처음 접속시 웰컴 메세지
+  const [welcome, setWelcome] = useState(true);
+  // Detail 상태
+  // 채팅창 입력 showDetail(true) 설정
+  const [showDetail, setShowDetail] = useState(false);
+  //채팅 높이 조절
+  // const [chatListHeight, setChatListHeight] = useState("100px"); // 초기 높이 설정
 
+  // Ref
   // 스크롤 chat-list 엘리먼트에 대한 ref 생성
   const chatListRef = useRef(null);
+  // 채팅 메시지  스타일 동적으로 변경
+  const chatRefs = useRef([]);
 
-  //채팅 높이 조절
-  const [chatListHeight, setChatListHeight] = useState("100px"); // 초기 높이 설정
-
-  // 새로운 채팅이 추가될 때 스크롤을 아래로 이동하고 높이 업데이트
+  // useEffect
+  // 스크롤 바닥으로 내려주는 역할
   useEffect(() => {
     if (chatListRef.current) {
-      // chat-list 엘리먼트의 스크롤을 아래로 이동
       chatListRef.current.scrollTop = chatListRef.current.scrollHeight;
     }
   }, [chats]);
 
-  // 첫 방문 시 챗봇 메시지와 스타일을 1초 뒤에 나타나게 하기
-  // useEffect : 타이머
-  // 배열안에 객체 "message": "안녕하세요. 챗봇입니다"
+  // 처음에 웰컴메시지 띄우는 역할
   useEffect(() => {
     if (welcome) {
       setTimeout(() => {
@@ -52,27 +53,49 @@ function Chat() {
     }
   }, [welcome]);
 
-  const onUserInput = () => {
-    let copy = [...chats];
-    const userInput = content;
-    copy.push({
-      type: "USER",
-      message: userInput,
+  //Detail 컴포넌트 띄우기
+  useEffect(() => {
+    // 조건만족되면 showDetail 실행
+    if (showDetail) {
+      const updatedChats = [...chats];
+      updatedChats[updatedChats.length - 1] = {
+        type: "AI",
+        message: <Detail />,
+      };
+      setChats(updatedChats);
+      setShowDetail(false);
+    }
+  }, [showDetail]);
+
+  // 채팅 메시지 쌓일 때마다 채팅메시지의 높이 조절
+  useEffect(() => {
+    let chatHeight = 0;
+    chatRefs.current.forEach((chatRef) => {
+      if (chatRef) {
+        const height = chatRef.getBoundingClientRect().height;
+        chatRef.style.top = `${chatHeight}px`;
+        chatHeight += height + 25;
+      }
     });
-    setChats(copy);
+  }, [chats]);
+
+  // 유저 인풋 받기
+  const onUserInput = () => {
+    // destructor
+    const newChats = [...chats, { type: "USER", message: content }];
+    setChats(newChats);
 
     // 채팅 처리 후, 입력 내용 초기화
-    setContent("");
+    // setContent("");
 
     setTimeout(() => {
-      let copy2 = [...copy];
-      // aiAnswer 내용 초기화
       let aiAnswer = "";
-      if (userInput.includes("안녕")) {
+
+      if (content.includes("안녕")) {
         aiAnswer = "반갑습니다";
-      } else if (userInput.includes("노트북 5개")) {
+      } else if (content.includes("노트북 5개")) {
         aiAnswer = <Cardslide />;
-      } else if (userInput.includes("노트북")) {
+      } else if (content.includes("노트북")) {
         aiAnswer = (
           <div className="cardContent" style={{ width: "700px" }}>
             <div>
@@ -86,64 +109,54 @@ function Chat() {
             </div>
           </div>
         );
-      } else if (userInput.includes("성능")) {
+      } else if (content.includes("성능")) {
         aiAnswer = <Chart />;
-      } else if (userInput.includes("픽챗")) {
+      } else if (content.includes("픽챗")) {
         aiAnswer = <Loading />;
+        // 2.5초 후
+        setTimeout(() => setShowDetail(true), 2500);
       }
-
-      copy2.push({
-        type: "AI",
-        message: aiAnswer,
-      });
-      setChats(copy2);
+      // AI 답변을 newChats에 추가하기. destructor
+      setChats([...newChats, { type: "AI", message: aiAnswer }]);
     }, 1000);
+
+    // Clear the input field
+    setContent("");
   };
+
   return (
     <div className="right-content">
       {/* 채팅 메시지 스크롤 */}
       <div className="chat-list" ref={chatListRef}>
-        {chats.map((chat, index) => {
-          const top_list = [
-            0, 80, 160, 240, 360, 880, 970, 1420, 1570, 1700, 1800,
-          ];
-          const top = index * 60;
-          return (
-            <div
-              key={index}
-              className={chat.type === "USER" ? "user-chat" : "ai-chat"}
-              style={{ top: `${top_list[index]}px` }}
-            >
-              {chat.message}
-            </div>
-          );
-        })}
+        {chats.map((chat, index) => (
+          <div
+            key={index}
+            ref={(el) => (chatRefs.current[index] = el)}
+            className={chat.type === "USER" ? "user-chat" : "ai-chat"}
+          >
+            {chat.message}
+          </div>
+        ))}
       </div>
-
       <div className="chat-box">
-        {/* input 글 발행 
-            1)input에 입력한 값 가져오기 
-            2) input에 입력한 값 저장하기
-            3) 마우스 엔터 */}
-        <input
-          className="user-input input-no-border"
-          type="text"
-          placeholder="픽챗에게 무엇이든 요청하세요. 1kg 100만원대 노트북 추천해줘"
-          value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              onUserInput();
-            }
-          }}
-        />
-
-        {/* button누르면 chat 추가
-            <div>생성x, state에 글 추가 
-            unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가*/}
-        <FontAwesomeIcon icon={faPaperPlane} />
+        <div className="chat-input">
+          <input
+            className="user-input input-no-border"
+            type="text"
+            placeholder="픽챗에게 무엇이든 요청하세요. 1kg 100만원대 노트북 추천해줘"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            onKeyPress={(e) => e.key === "Enter" && onUserInput()}
+            style={{ outline: "none" }}
+          />
+          <FontAwesomeIcon
+            icon={faPaperPlane}
+            style={{ color: "#294ad3", marginRight: "15px" }}
+            size="lg"
+            onClick={() => onUserInput()}
+          />
+        </div>
+        <div></div>
       </div>
     </div>
   );

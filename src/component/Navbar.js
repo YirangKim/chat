@@ -30,11 +30,16 @@ function Navigation() {
         <div className="navbar-content">
           <FontAwesomeIcon
             icon={faBars}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", color: "#333" }}
             onClick={toggleChatHistory}
           />
           <div className="brand-content">
-            <Navbar.Brand href="#home">PickChat</Navbar.Brand>
+            {/* <Navbar.Brand href="#home">PickChat</Navbar.Brand> */}
+            <img
+              src="/logo.png"
+              alt="로고"
+              style={{ width: "150px", marginLeft: "20px" }}
+            />
           </div>
         </div>
         {isShow && (
@@ -60,9 +65,9 @@ function Navigation() {
               <NavDropdown.Item href="#action/3.2">쿠폰</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">히스토리</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              {/* <NavDropdown.Item href="#action/3.4">
                 Separated link
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
