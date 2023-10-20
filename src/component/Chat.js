@@ -63,10 +63,10 @@ function Chat() {
         console.log(data);
         setChatData({
           Model1: data.Model1,
-          Model1: data.Model2,
-          Model1: data.Model3,
-          Model1: data.Model4,
-          Model1: data.Model5,
+          Model2: data.Model2,
+          Model3: data.Model3,
+          Model4: data.Model4,
+          Model5: data.Model5,
         });
       })
       .catch((error) => {
@@ -139,7 +139,10 @@ function Chat() {
       if (content.includes("안녕")) {
         aiAnswer = "반갑습니다";
       } else if (content.includes("노트북 추천")) {
-        aiAnswer = <Cardslide />;
+        aiAnswer = <Cardslide cardData={chatData} />;
+        {
+          /* Pass chatData as a prop to Cardslide */
+        }
       } else if (content.includes("속도")) {
         aiAnswer = <AiSpeed />;
       } else if (content.includes("가벼운")) {
