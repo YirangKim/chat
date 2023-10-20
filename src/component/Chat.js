@@ -38,7 +38,42 @@ function Chat() {
   // 채팅 메시지  스타일 동적으로 변경
   const chatRefs = useRef([]);
 
+  const [chatData, setChatData] = useState({
+    Model1: [],
+    Model2: [],
+    Model3: [],
+    Model4: [],
+    Model5: [],
+  });
+
   // useEffect
+
+  // 서버불러오기
+  useEffect(() => {
+    // fetch(`/chartdata?period=${period}`)
+    fetch("/pickchat", {
+      method: "POST",
+    })
+      .then((response) => response.json())
+      // .then((response) => {
+      //   console.log(response); // Log the full response
+      //   return response.json();
+      // })
+      .then((data) => {
+        console.log(data);
+        setChatData({
+          Model1: data.Model1,
+          Model1: data.Model2,
+          Model1: data.Model3,
+          Model1: data.Model4,
+          Model1: data.Model5,
+        });
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  }, []); // chat 페이지 렌더링
+
   // 스크롤 바닥으로 내려주는 역할
   useEffect(() => {
     if (chatListRef.current) {
