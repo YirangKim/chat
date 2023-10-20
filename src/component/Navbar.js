@@ -38,7 +38,7 @@ function Navigation() {
             <img
               src="/logo.png"
               alt="로고"
-              style={{ width: "150px", marginLeft: "20px" }}
+              style={{ width: "130px", marginLeft: "20px" }}
             />
           </div>
         </div>

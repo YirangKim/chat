@@ -94,6 +94,7 @@ body {
 .chat-input {
   display: flex;
   align-items: center;
+  justify-content: center; /* 가로 중앙 정렬을 위해 추가 */
   padding: 10px;
   border-top: 1px solid #ccc;
 }
@@ -107,7 +108,7 @@ body {
 }
 
 .chat-input button {
-  background-color: #007bff;
+  background-color: #84adda;
   color: white;
   border: none;
   border-radius: 4px;
@@ -116,7 +117,7 @@ body {
 }
 
 .chat-input button:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
 }
 
 .user-input {
@@ -361,7 +362,6 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  border: 1px red solid;
 }
 
 .detailMedium {
@@ -384,4 +384,45 @@ body {
   margin-top: 10px;
   font-family: bold;
   color: red;
+}
+
+/* Intro */
+.IntroWrap {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.intro-txt {
+  margin: 60px;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: content;
+  margin: 0 auto;
+  text-align: center;
+  margin-left: 100px;
+}
+
+.intro-txt p {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.introBtn button {
+  margin: auto;
+  margin-bottom: 5px;
+  width: 200px;
+  padding: 8px;
+  display: flex;
+  border-radius: 15px;
+  flex-direction: column;
+  border-style: none;
+  background-color: #0072ed;
+  color: white;
+}
+
+.introBtn-txt {
+  text-align: center;
 }

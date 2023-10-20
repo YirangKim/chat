@@ -28,7 +28,7 @@ function Cardslide() {
     <>
       <div>
         <TypingText
-          text="영상편집용 가벼운 200만원대 노트북 5개를 추천해 드립니다."
+          text="영상편집용 200만원대 노트북 5개를 추천해 드립니다."
           interval={30}
         />
       </div>
@@ -38,26 +38,35 @@ function Cardslide() {
             <Card>
               <Card.Img
                 variant="top"
-                src="/list01.jpg"
+                src="/laptop01.jpg"
                 style={{ width: "410px", height: "auto" }}
               />
               <Card.Body>
-                {/* <Card.Title>
+                <Card.Title>
                   1. 삼성전자 갤럭시북 프로 NT930XDB-KC59S
                 </Card.Title>
                 <Card.Text>
-                  가격 : 1,049,000원 <br />
-                  무게 : 0.87kg <br />
-                  추천이유 : CPU 점수가 9917, GPU 점수가 1102로 성능이 좋습니다.
-                  또한, 화면의 밝기가 250, 화면의 주사율이 60으로 시각적인
-                  만족도가 높습니다.
-                </Card.Text> */}
-                {/* 버튼 외부 링크  */}
-                {/* <div>
-                  <Link to={shopUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="primary">제품 보러가기</Button>
-                  </Link>
-                </div> */}
+                  <p>
+                    화면사이즈 : <span>39.6cm</span>
+                  </p>
+                  <br />
+                  <p>
+                    무게 : <span>1.98cm</span>
+                  </p>
+                  <br />
+                  <p>
+                    CPU : <span>코어i5</span>
+                  </p>
+                  <br />
+                  <p>
+                    배터리 : <span>RTX4050</span>
+                  </p>
+                  <br />
+                  <p>
+                    가격 : <span>1,047,990원</span>
+                  </p>
+                  <br />
+                </Card.Text>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -65,23 +74,36 @@ function Cardslide() {
             <Card>
               <Card.Img
                 variant="top"
-                src="/list02.jpg"
+                src="/laptop01.jpg"
                 style={{ width: "410px", height: "auto" }}
               />
-              {/* <Card.Body>
+              <Card.Body>
                 <Card.Title>
-                  2 에이서 스위프트 엣지 16 OLED SFE16-43-R8ZU (SSD 512GB)
+                  1. 삼성전자 갤럭시북 프로 NT930XDB-KC59S
                 </Card.Title>
                 <Card.Text>
-                  가격 : 1,510,000원 <br></br>
-                  무게 : 1kg
+                  <p>
+                    화면사이즈 : <span>39.6cm</span>
+                  </p>
+                  <br />
+                  <p>
+                    무게 : <span>1.98cm</span>
+                  </p>
+                  <br />
+                  <p>
+                    CPU : <span>코어i5</span>
+                  </p>
+                  <br />
+                  <p>
+                    배터리 : <span>RTX4050</span>
+                  </p>
+                  <br />
+                  <p>
+                    가격 : <span>1,047,990원</span>
+                  </p>
+                  <br />
                 </Card.Text>
-                <div>
-                  <Link to={shopUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="primary">제품 보러가기</Button>
-                  </Link>
-                </div>
-              </Card.Body> */}
+              </Card.Body>
             </Card>
           </Carousel.Item>
           <Carousel.Item>

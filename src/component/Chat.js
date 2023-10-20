@@ -12,7 +12,7 @@ import Spec3 from "./Spec3";
 import AiSpeed from "./AiSpeed.js";
 import AiWeight from "./AiWeight.js";
 import AiDisplay from "./AiDisplay.js";
-
+import Intro from "./Intro.js";
 //fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +30,8 @@ function Chat() {
   const [showDetail, setShowDetail] = useState(false);
   //채팅 높이 조절
   // const [chatListHeight, setChatListHeight] = useState("100px"); // 초기 높이 설정
-
+  //showIntro
+  const [showIntro, setShowIntro] = useState(true);
   // Ref
   // 스크롤 chat-list 엘리먼트에 대한 ref 생성
   const chatListRef = useRef(null);
@@ -49,16 +50,18 @@ function Chat() {
   useEffect(() => {
     if (welcome) {
       setTimeout(() => {
-        setChats([
-          {
-            message: <TypingText text="안녕하세요. 픽챗입니다" interval={40} />,
-            type: "AI",
-          },
-        ]);
-        setWelcome(false);
-      }, 500);
+        // Show the Intro component in the welcome message
+        setChats([<Intro showIntro={showIntro} />]);
+
+        // 3 seconds later, hide the welcome message
+        setTimeout(() => {
+          setChats([]);
+          setWelcome(false);
+          setShowIntro(false);
+        }, 3000);
+      }, 250);
     }
-  }, [welcome]);
+  }, [welcome, showIntro]);
 
   //Detail 컴포넌트 띄우기
   useEffect(() => {
@@ -159,8 +162,8 @@ function Chat() {
             onClick={() => onUserInput()}
           />
         </div>
-        <div></div>
       </div>
+      {showIntro && <Intro showIntro={showIntro} />} {/* Pass showIntro prop */}
     </div>
   );
 }

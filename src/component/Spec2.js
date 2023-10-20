@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TypingText from "./TypingText";
-import Chart from "./Chart";
+// import Chart from "./Chart";
+import Chart2 from "./Chart2";
 
 function Spec2() {
   const [showSpecList, setShowSpecList] = useState(false);
@@ -18,7 +19,7 @@ function Spec2() {
   return (
     <div className="spec-wrap">
       <div>
-        <Chart />
+        <Chart2 />
       </div>
       <div>
         <TypingText
