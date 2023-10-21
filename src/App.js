@@ -6,6 +6,7 @@ import Chat from "./component/Chat.js";
 import NewChart from "./component/Chart.js";
 import Navigation from "./component/Navbar.js";
 import Header from "./component/Header.js";
+import AiChat from "./component/AiChat.js";
 // import LineChart from "./component/LineChart.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChatHistory from "./component/ChatHistory";
@@ -23,7 +24,8 @@ function App() {
       <Navigation />
       <div className="container-wrap">
         {/* <ChatHistory /> */}
-        <Chat />
+        {/* <Chat /> */}
+        <AiChat />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cardslide from "./Cardslide";
+import Cardslide2 from "./Cardslide2";
 import Chart from "./Chart";
 import TypingText from "./TypingText";
 import Detail from "./Detail";
@@ -46,6 +47,8 @@ function Chat() {
     Model5: [],
   });
 
+  const [text, setText] = useState("");
+
   // useEffect
 
   // 서버불러오기
@@ -61,13 +64,14 @@ function Chat() {
       // })
       .then((data) => {
         console.log(data);
-        setChatData({
-          Model1: data.Model1,
-          Model2: data.Model2,
-          Model3: data.Model3,
-          Model4: data.Model4,
-          Model5: data.Model5,
-        });
+        setText(data);
+        // setChatData({
+        //   Model1: data.Model1,
+        //   Model2: data.Model2,
+        //   Model3: data.Model3,
+        //   Model4: data.Model4,
+        //   Model5: data.Model5,
+        // });
       })
       .catch((error) => {
         console.error("Fetch error:", error);
@@ -143,6 +147,8 @@ function Chat() {
         {
           /* Pass chatData as a prop to Cardslide */
         }
+      } else if (content.includes("카메라")) {
+        aiAnswer = <Cardslide2 />;
       } else if (content.includes("속도")) {
         aiAnswer = <AiSpeed />;
       } else if (content.includes("가벼운")) {

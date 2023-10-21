@@ -11,14 +11,7 @@ function Cardslide({ cardData }) {
   let shopUrl =
     "https://prod.danawa.com/info/?pcode=20239928&cate=112758&adinflow=Y";
 
-  // const [cardData] = {
-  //   Model1: [],
-  //   Model2: [],
-  //   Model3: [],
-  //   Model4: [],
-  //   Model5: [],
-  // };
-
+  const model1 = "Model1";
   // 상태를 추가하여 Carousel이 보여질지 여부를 관리
   const [showCarousel, setShowCarousel] = useState(false);
 
@@ -36,7 +29,7 @@ function Cardslide({ cardData }) {
     <>
       <div>
         <TypingText
-          text="영상편집용 200만원대 노트북 5개를 추천해 드립니다."
+          text={`영상편집용 200만원대 노트북 ${cardData[model1].Name} 5개를 추천해 드립니다.`}
           interval={30}
         />
       </div>
@@ -47,33 +40,44 @@ function Cardslide({ cardData }) {
             <Carousel.Item key={model}>
               <Card>
                 <Card.Img
+                  className="chat-image"
+                  style={{ width: "400px" }}
+                  src="/pick.jpg"
+                  alt="노트북"
+                />
+
+                {/* <Card.Img
+                  src={cardData[model].Image}
+                  alt={cardData[model].Name}
+                  style={{ width: "410px", height: "auto" }}
+                /> */}
+                {/* <Card.Img
                   variant="top"
                   src="/laptop01.jpg"
                   style={{ width: "410px", height: "auto" }}
-                />
+                /> */}
                 <Card.Body>
                   <Card.Title>1. {cardData[model].Name}</Card.Title>
                   <Card.Text>
                     <p>
-                      화면사이즈 : <span>{cardData[model].display}</span>
+                      화면사이즈 : <span>{cardData[model].Display}</span>
                     </p>
-                    <br />
+
                     <p>
-                      무게 : <span>{cardData[model].weight}</span>
+                      무게 : <span>{cardData[model].Weight}Kg</span>
                     </p>
-                    <br />
+
                     <p>
-                      CPU : <span>{cardData[model].cpu}</span>
+                      CPU : <span>{cardData[model].CPU}</span>
                     </p>
-                    <br />
+
                     <p>
-                      배터리 : <span>{cardData[model].battery}</span>
+                      배터리 : <span>{cardData[model].Battery}</span>
                     </p>
-                    <br />
+
                     <p>
-                      가격 : <span>{cardData[model].price}</span>
+                      가격 : <span>{cardData[model].Price}</span>
                     </p>
-                    <br />
                   </Card.Text>
                 </Card.Body>
               </Card>

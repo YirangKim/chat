@@ -135,11 +135,13 @@ body {
 
 .right-content {
   padding: 50px 200px 0 200px;
-  width: 100%;
+  width: 75%;
   /* height: 100vh; */
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  justify-content: center;
+  margin: 0 auto;
   /* border: solid 1px blue; */
 }
 
@@ -151,6 +153,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: center;
   padding: 100px;
 
   /* border: solid 1px #009c58; */
