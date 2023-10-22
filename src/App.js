@@ -20,13 +20,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Header /> */}
       <Navigation />
-      <div className="container-wrap">
-        {/* <ChatHistory /> */}
-        {/* <Chat /> */}
-        <AiChat />
-      </div>
+      <Routes>
+        <Route path="/" element={<Chat />} />
+        <Route path="/AI" element={<AiChat />} />
+      </Routes>
     </div>
   );
 }
