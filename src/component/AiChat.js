@@ -39,14 +39,22 @@ function AiChat() {
 
   return (
     <div>
-      <input
+      {/* <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <button onClick={handleButtonClick}>데이터 불러오기</button>
       <div>질문 : {text}</div>
-      <div>Ai : {text2}</div>
+      <div>Ai : {text2}</div> */}
+
+      {/* <iframe>을 사용하여 Streamlit 앱 또는 웹 콘텐츠를 포함합니다. */}
+      <iframe
+        title="Streamlit App"
+        src="https://pick-chat.streamlit.app/?embedded=true"
+        width="100%"
+        height="900px"
+      />
     </div>
   );
 }
