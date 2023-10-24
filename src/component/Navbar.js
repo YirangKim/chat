@@ -1,13 +1,18 @@
 import Container from "react-bootstrap/Container";
+import { useNavigate } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
+
 import ChatHistory from "./ChatHistory";
 import React, { useState } from "react";
 
 function Navigation() {
+  const navigate = useNavigate();
+
   const [isShow, setShow] = useState(false);
 
   const customNavbarStyle = {
@@ -21,35 +26,37 @@ function Navigation() {
   };
 
   return (
-    // 배경색 빼기 className="bg-body-tertiary"
     <Navbar
       expand="lg"
       style={{ ...customNavbarStyle, background: "transparent" }}
     >
-      <Container fluid style={{ margin: "0 20px" }}>
+      <Container fluid style={{ margin: "0 30px" }}>
         <div className="navbar-content">
           <FontAwesomeIcon
             icon={faBars}
-            style={{ cursor: "pointer", color: "#333" }}
+            style={{ cursor: "pointer", color: "#8f8f8f" }}
+            size="lg"
             onClick={toggleChatHistory}
           />
           <div className="brand-content">
             {/* <Navbar.Brand href="#home">PickChat</Navbar.Brand> */}
             <img
+              onClick={() => navigate("/")}
               src="/logo.png"
               alt="로고"
               style={{ width: "130px", marginLeft: "20px" }}
             />
           </div>
-        </div>
-        {isShow && (
-          <div className="chatHistory">
-            <p>채팅목록</p>
-            <p>영상편집 노트북 추천해줘</p>
-            <p>사무용 노트북 추천해줘</p>
-            <p>사무용 노트북 추천해줘</p>
+          <div>
+            <img
+              onClick={() => navigate("/AI")}
+              src="/Cplus.png"
+              alt="로고"
+              style={{ width: "70px", marginLeft: "10px" }}
+            />
           </div>
-        )}
+        </div>
+        {isShow && <ChatHistory />}
 
         {/* <Navbar.Brand href="#home">PickChat</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

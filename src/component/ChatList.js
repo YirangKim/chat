@@ -1,17 +1,29 @@
-import { Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import "../App.css"; // Chat 컴포넌트의 스타일을 ChatList에서 사용하기 위해 import합니다.
+import Cardslide2 from "./Cardslide2";
+import Spec1 from "./Spec1";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function ChatList() {
+function ChatList(props) {
+  // ChatList 컴포넌트에서 Chat 컴포넌트의 스타일을 사용하기 위해
+  // Chat 컴포넌트에서 정의한 스타일과 클래스를 props로 전달받습니다.
+  const { chatListRef, chatRefs, content, onUserInput } = props;
+
   return (
-    <Routes>
-      <Route
-        path="/History"
-        element={
-          <div className="user-chat">
-            <p>사무용 1kg 100만원대 노트북 추천해줘</p>
-          </div>
-        }
-      />
-    </Routes>
+    <div className="ChatList-Wrap">
+      <div className="chat-item chat-list-right  user-chat">
+        성능좋은 카메라 추천해줘
+      </div>
+      <div className="chat-item chat-list-left ai-chat">
+        <Cardslide2 />
+      </div>
+      {/* <div className="chat-item user-chat">1번 노트북 성능 뭐야?</div>
+      <div className="chat-item ai-chat">
+        <Spec1 />
+      </div> */}
+    </div>
   );
 }
 

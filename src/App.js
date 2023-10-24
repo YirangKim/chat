@@ -7,6 +7,7 @@ import NewChart from "./component/Chart.js";
 import Navigation from "./component/Navbar.js";
 import Header from "./component/Header.js";
 import AiChat from "./component/AiChat.js";
+import ChatList from "./component/ChatList.js";
 // import LineChart from "./component/LineChart.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChatHistory from "./component/ChatHistory";
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Chat />} />
         <Route path="/AI" element={<AiChat />} />
+        <Route path="/ChatList" element={<ChatList />} />
       </Routes>
     </div>
   );

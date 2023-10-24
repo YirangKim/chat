@@ -330,11 +330,12 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+/* 채팅목록 */
 .chatHistory {
   /* background: #fff; */
-  /* border: 1px solid #ccc; */
+
   position: absolute;
-  top: 69px; /* 내비게이션 바의 아래에 위치 */
+  top: 70px; /* 내비게이션 바의 아래에 위치 */
   left: 0px; /* 왼쪽에 붙이도록 수정 */
   z-index: 999; /* 다른 요소 위에 나타나도록 설정 */
   display: flex;
@@ -344,11 +345,46 @@ body {
   height: 100vh;
   /* background-color: #0072ed; */
   border-right: 1px solid #ccc;
+  background-color: #eef7ff;
+}
+
+.chatHistory-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0;
+  /* width: 190px; */
+  border-bottom: 1px solid #ccc;
 }
 
 .chatHistory p {
+  font-size: 17px;
+  /* font-weight: bold; */
   margin: 0;
-  padding: 5px 0;
+  padding: 20px;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+.chatHistory span {
+  margin-left: 10px;
+}
+
+/* .chatHistory-icon {
+  margin-left: auto;
+} */
+
+.HistoryList-txt p {
+  font-size: 14px;
+  margin: 0;
+  color: #6b718c;
+}
+
+.HistoryList-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* padding: 10px; */
+  border-bottom: 1px solid #ccc;
 }
 
 /* faBars 아이콘 스타일 */
@@ -428,4 +464,40 @@ body {
 
 .introBtn-txt {
   text-align: center;
+}
+
+/* ChatList-Wrap */
+
+.ChatList-Wrap {
+  margin-top: 90px;
+  width: 900px;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* border: 1px solid red; */
+}
+
+.ChatList-Wrap div {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.ChatList-Wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-item {
+  margin: 0 500px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.chat-list-left {
+  margin-top: 50px;
 }
