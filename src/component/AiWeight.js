@@ -9,7 +9,7 @@ function AiWeight() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpecList(true);
-    }, 2000);
+    }, 4000);
 
     return () => clearTimeout(timer); // Clear the timer when the component unmounts
   }, []);
@@ -17,15 +17,18 @@ function AiWeight() {
   return (
     <div className="spec-wrap">
       <div>
-        <TypingText text="가벼운 노트북을 추천해드리겠습니다." interval={30} />
+        <TypingText
+          text="이 중에서 가장 가벼운 노트북은 ASUS ROG 제피러스 G14 GA402XI-N2042이며, 무게는 1.65kg입니다."
+          interval={50}
+        />
         {showSpecList && (
           <div className="spec-list">
             <ul>
               <img
-                src="/note02.jpg"
+                src="/note03.jpg"
                 style={{ width: "410px", height: "auto" }}
               />
-              <h5>한성컴퓨터 TFX4150HW</h5>
+              {/* <h5>ASUS ROG 제피러스 G14 GA402XI-N2042</h5>
               <li>
                 CPU: 인텔 / 코어i5-11세대 / i5-1135G7 (2.4GHz) / 쿼드(4)코어
               </li>
@@ -34,7 +37,7 @@ function AiWeight() {
               <li>화면 크기: 13.3인치</li>
               <li>화면 밝기: 250 </li>
               <li>파워: 배터리: 63Wh / 어댑터: 65W / 충전단자: 타입C</li>
-              <li>무게:0.87kg</li>
+              <li>무게:0.87kg</li> */}
             </ul>
           </div>
         )}

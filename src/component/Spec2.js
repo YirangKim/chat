@@ -11,7 +11,7 @@ function Spec2() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpecList(true);
-    }, 2000);
+    }, 6000);
 
     return () => clearTimeout(timer); // Clear the timer when the component unmounts
   }, []);
@@ -23,22 +23,19 @@ function Spec2() {
       </div>
       <div>
         <TypingText
-          text="레노버 요가 Slim7 Carbon
-          14ACN6 82L0004YKR 노트북 성능은 다음과 같습니다."
-          interval={30}
+          text="DELL G시리즈 G15 DG5520-UB06KR WIN11 성능은 다음과 같습니다. 이 제품은 높은 성능의 CPU와 GPU를 탑재하고 있어, 빠른 처리 속도를 제공합니다. 또한, 램 용량이 32GB로 매우 크며, 저장장치로는 빠른 속도의 NVMe SSD를 사용하고 있습니다"
+          interval={50}
         />
         {showSpecList && (
           <div className="spec-list">
             <ul>
-              <li>
-                CPU: 인텔 / 코어i5-11세대 / i5-11300H (3.1GHz) / 쿼드(4)코어
-              </li>
-              <li>CPU 점수: 9988</li>
-              <li>GPU 점수: 1100</li>
-              <li>화면 크기: 14인치</li>
-              <li>화면 밝기: 260</li>
-              <li>배터리: 60Wh / 어댑터: 65W / 충전단자: 타입C</li>
-              <li>무게: 1.00kg</li>
+              <li>CPU: 인텔 코어i9-12세대 i9-12900H (2.5GHz), 14코어(6P+8E)</li>
+              <li>CPU 점수: 28146</li>
+              <li>GPU 점수: 8599</li>
+              <li>화면 크기: 15.6인치</li>
+              <li>화면 밝기: 400nit</li>
+              <li>배터리: 86Wh / 어댑터: 240W / 충전단자: DC</li>
+              <li>무게: 2.67kg</li>
             </ul>
           </div>
         )}

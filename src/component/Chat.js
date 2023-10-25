@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cardslide from "./Cardslide";
-import Cardslide2 from "./Cardslide2";
+import Cardslide_camera from "./Cardslide_camera";
 import Chart from "./Chart";
 import TypingText from "./TypingText";
 import Detail from "./Detail";
@@ -143,32 +143,32 @@ function Chat() {
       if (content.includes("안녕")) {
         aiAnswer = "반갑습니다";
       } else if (content.includes("노트북 추천")) {
-        aiAnswer = <Cardslide cardData={chatData} />;
+        aiAnswer = <Cardslide />;
         {
           /* Pass chatData as a prop to Cardslide */
         }
       } else if (content.includes("카메라")) {
-        aiAnswer = <Cardslide2 />;
+        aiAnswer = <Cardslide_camera />;
       } else if (content.includes("속도")) {
         aiAnswer = <AiSpeed />;
       } else if (content.includes("가벼운")) {
         aiAnswer = <AiWeight />;
       } else if (content.includes("큰화면")) {
         aiAnswer = <AiDisplay />;
-      } else if (content.includes("1번 노트북 성능")) {
+      } else if (content.includes("ASUS ROG 제피러스")) {
         aiAnswer = <Spec1 />;
-      } else if (content.includes("2번 노트북 성능")) {
+      } else if (content.includes("DELL")) {
         aiAnswer = <Spec2 />;
-      } else if (content.includes("3번 노트북 성능")) {
+      } else if (content.includes("MSI Vector")) {
         aiAnswer = <Spec3 />;
       } else if (content.includes("픽챗")) {
         aiAnswer = <Loading />;
         // 2.5초 후
-        setTimeout(() => setShowDetail(true), 2500);
+        setTimeout(() => setShowDetail(true), 3000);
       }
       // AI 답변을 newChats에 추가하기. destructor
       setChats([...newChats, { type: "AI", message: aiAnswer }]);
-    }, 1000);
+    }, 2500);
 
     // Clear the input field
     setContent("");

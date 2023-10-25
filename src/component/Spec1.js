@@ -10,7 +10,7 @@ function Spec1() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpecList(true);
-    }, 2000);
+    }, 6000);
 
     return () => clearTimeout(timer); // Clear the timer when the component unmounts
   }, []);
@@ -22,20 +22,18 @@ function Spec1() {
       </div>
       <div>
         <TypingText
-          text="삼성전자 갤럭시북 프로 NT930XDB-KC59S 노트북 성능은 다음과 같습니다."
-          interval={30}
+          text="ASUS ROG 제피러스 G14 GA402XI-N2042의 성능은 다음과 같아요.이 제품은 높은 성능의 CPU와 GPU를 탑재하고 있어, 영상 편집에 적합한 성능을 가지고 있습니다.  "
+          interval={50}
         />
         {showSpecList && (
           <div className="spec-list">
             <ul>
-              <li>
-                CPU: 인텔 / 코어i5-11세대 / i5-1135G7 (2.4GHz) / 쿼드(4)코어
-              </li>
-              <li>CPU 점수: 9917</li>
-              <li>GPU 점수: 1102</li>
-              <li>화면 크기: 13.3인치</li>
-              <li>화면 밝기: 250 </li>
-              <li>파워: 배터리: 63Wh / 어댑터: 65W / 충전단자: 타입C</li>
+              <li>CPU: AMD 라이젠9(Zen4) 7940HS (4.0Hz), 옥타(8)코어</li>
+              <li>CPU 점수: 28435</li>
+              <li>GPU 점수: 9755</li>
+              <li>화면 크기: 14인치</li>
+              <li>화면 밝기: 500nit </li>
+              <li>파워: 배터리: 76Wh / 어댑터: 240W / 충전단자: DC</li>
               <li>무게:0.87kg</li>
             </ul>
           </div>

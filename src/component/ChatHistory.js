@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import ChatList from "./ChatList";
+import ChatList_camera from "./ChatList_car";
+import Cardslide_car from "./Cardslide_car";
 
 function ChatHistory() {
   const navigate = useNavigate();
@@ -34,22 +35,28 @@ function ChatHistory() {
             {/* ChatList 컴포넌트로 연결하는 Link */}
             <span
               style={{ cursor: "pointer" }}
-              onClick={() => navigate("/ChatList")}
+              onClick={() => navigate("/ChatList_camera")}
             >
               성능 좋은 카메라 추천해줘
             </span>
           </p>
         </div>
-        {/* <div className="HistoryList-content">
+        <div className="HistoryList-content">
           <p>
             <FontAwesomeIcon
               icon={faComment}
               style={{ cursor: "pointer", color: "#0072ed" }}
               size="lg"
             />
-            <span>사무용 노트북 추천해줘</span>
+            {/* ChatList 컴포넌트로 연결하는 Link */}
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/ChatList_car")}
+            >
+              판매량 많은 자동차 추천해줘
+            </span>
           </p>
-        </div> */}
+        </div>
       </div>
     </div>
   );

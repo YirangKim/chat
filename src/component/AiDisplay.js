@@ -9,7 +9,7 @@ function AiDisplay() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpecList(true);
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timer); // Clear the timer when the component unmounts
   }, []);
@@ -17,15 +17,18 @@ function AiDisplay() {
   return (
     <div className="spec-wrap">
       <div>
-        <TypingText text="큰화면 노트북을 추천해드리겠습니다." interval={30} />
+        <TypingText
+          text="이 중에서 화면 크기가 가장 큰 노트북은 MSI GP시리즈 Vector GP66 12UH-i9 입니다. 15.6인치 크기의 화면을 가지고 있습니다."
+          interval={50}
+        />
         {showSpecList && (
           <div className="spec-list">
             <ul>
               <img
-                src="/note03.jpg"
+                src="/note01.jpg"
                 style={{ width: "410px", height: "auto" }}
               />
-              <h5>LG전자 2023 그램15 15ZD90RT-GX5BK WIN11</h5>
+              {/* <h5>LG전자 2023 그램15 15ZD90RT-GX5BK WIN11</h5>
               <li>
                 CPU: 인텔 / 코어i5-13세대 / i5-1340P (1.9GHz) / 12코어(4P+8E)
               </li>
@@ -34,7 +37,7 @@ function AiDisplay() {
               <li>화면 크기: 14인치</li>
               <li>화면 밝기: 270</li>
               <li>파워: 배터리: 53Wh / 어댑터: 90W / 충전단자: DC </li>
-              <li>무게: 1.00kg</li>
+              <li>무게: 1.00kg</li> */}
             </ul>
           </div>
         )}

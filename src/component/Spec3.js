@@ -10,7 +10,7 @@ function Spec3() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpecList(true);
-    }, 2000);
+    }, 7000);
 
     return () => clearTimeout(timer); // Clear the timer when the component unmounts
   }, []);
@@ -22,22 +22,19 @@ function Spec3() {
       </div>
       <div>
         <TypingText
-          text="LG전자 2023 그램15
-          15ZD90RT-GX5BK WIN11 노트북 성능은 다음과 같습니다."
-          interval={30}
+          text="MSI GP시리즈 Vector GP66 12UH-i9의 성능은 다음과 같습니다.화면은 15.6인치 크기에 141ppi의 해상도를 가지고 있으며, 300nit의 밝기와 165Hz의 높은 주사율을 지원합니다"
+          interval={50}
         />
         {showSpecList && (
           <div className="spec-list">
             <ul>
-              <li>
-                CPU: 인텔 / 코어i5-13세대 / i5-1340P (1.9GHz) / 12코어(4P+8E)
-              </li>
+              <li>CPU: 인텔 코어i9-12세대 i9-12900H (2.5GHz), 14코어(6P+8E)</li>
               <li>CPU 점수: 100000</li>
-              <li>GPU 점수: 1102</li>
-              <li>화면 크기: 14인치</li>
-              <li>화면 밝기: 270</li>
-              <li>파워: 배터리: 53Wh / 어댑터: 90W / 충전단자: DC </li>
-              <li>무게: 1.00kg</li>
+              <li>GPU 점수: 9952</li>
+              <li>화면 크기: 15.6인치</li>
+              <li>화면 밝기: 300nit</li>
+              <li>파워: 배터리: 65Wh / 어댑터: 280W / 충전단자: DC </li>
+              <li>무게: 2.38kg</li>
             </ul>
           </div>
         )}
